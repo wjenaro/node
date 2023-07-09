@@ -1,7 +1,6 @@
-const amount=12
-if (amount <10){
-    console.log('small number');
-}
-else{
-    console.log("Hello world, this is my first node js app \n it is a  big number");
-}
+var http = require('http');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end('Hello World!');
+}).listen(8080);
