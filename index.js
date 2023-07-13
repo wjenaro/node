@@ -1,8 +1,7 @@
-const fs=require('fs');
-fs.readFile('/Users/joe/message.txt', 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(data);
-  });
+const sayName =require('./4-fu');
+const name =require('./4-file');
+
+console.log(name);
+console.log(sayName)
+
+sayName(name.secondname)
