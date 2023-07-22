@@ -3,7 +3,11 @@ const app=express();
 // get method
 app.get("/", function(req, res){
     res.send("Good , Moving on welllllllllllll");
+
     
+});
+app.post("/", function(req, req){
+    console.log(req.rawHeaders)
 });
 
 //server
