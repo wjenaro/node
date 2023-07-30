@@ -14,6 +14,7 @@ app.post("/submit", (req, res) => {
 
   const numLetters = req.body["fName"].length + req.body["lName"].length;
   res.render("index.ejs", { numberOfLetters: numLetters });
+  
 });
 
 app.listen(port, () => {

@@ -9,12 +9,18 @@
 
 <body>
   <!-- Write your code here -->
+  <% if(locals.numberOfLetters){ %>
+
+    <h1>Your name has <%= numberOfLetters %> numberof letters &#x1F604;</h1>
+  <% }else{%>
+    <h1> Enter you name below &#x1F609;</h1>
+  <% } %>
   <form action="/submit" method="POST">
     <input type="text" name="fName" placeholder="First name">
     <input type="text" name="lName" placeholder="Last name">
     <input type="submit" value="OK">
   </form>
-  <%=  %>
+
 </body>
 
 </html>
