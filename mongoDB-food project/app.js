@@ -1,8 +1,29 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://127.0.0.1/mydb";
+const { MongoClient } = require('mongodb');
+// or as an es module:
+// import { MongoClient } from 'mongodb'
 
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  console.log("Database created!");
-  db.close();
-});
+// Connection URL
+const url = 'mongodb://0.0.0.0:27017/';
+const client = new MongoClient(url);
+
+// Database Name
+const dbName = 'fruitsDB';
+
+async function main() {
+  // Use connect method to connect to the server
+  await client.connect();
+  console.log('Connected successfully to server');
+  const db = client.db(dbName);
+  const collection = db.collection('documents');
+
+  // the following code examples can be pasted here...
+  const insertResult = await collection.insertMany([{ a: 1 }, { a: 2 }, { a: 3 }]);
+  console.log('Inserted documents =>', insertResult);
+  
+  return 'done.';
+}
+
+main()
+  .then(console.log)
+  .catch(console.error)
+  .finally(() => client.close());
