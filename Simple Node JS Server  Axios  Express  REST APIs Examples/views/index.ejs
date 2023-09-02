@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>English Premier League Teams</title>
+    <style>
+      .container{
+        width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #150baa;
+      }
+      .content{
+        width: 70%;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .actions{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .team-logo {
+            max-width: 50px;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1>English Premier League Teams
+
+        <%= epl.parameters.season %>
+      </h1>
+      <table>
+          <tr>
+              <th>Logo</th>
+              <th>Team Name</th>
+              <th>Country</th>
+              <th>Founded</th>
+              <th>Venue</th>
+          </tr>
+          <% epl.response.forEach(function(item) { %>
+              <tr>
+              
+                  <td><img class="team-logo" src="<%= item.team.logo %>" alt="<%= item.team.name %> Logo"></td>
+                  <td><%= item.team.name %></td>
+                  <td><%= item.team.country %></td>
+                  <td><%= item.team.founded %></td>
+                  <td><%= item.venue.name %>, <%= item.venue.city %></td>
+              </tr>
+          <% }); %>
+      </table>
+
+      <div class="actions">
+        <button>Update</button>
+    
+      </div>
+
+    </div>
+
+  </div>
+   
+</body>
+</html>

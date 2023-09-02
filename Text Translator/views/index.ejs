@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Language Translator</title>
+</head>
+<body>
+    <h1>Language Translator</h1>
+
+    <h2>Languages:</h2>
+    <ul>
+        <% for (let i = 0; i < lg.data.languages.length; i++) { %>
+            <li>
+                <strong>Code:</strong> <%= lg.data.languages[i].code %><br>
+                <strong>Name:</strong> <%= lg.data.languages[i].name %>
+            </li>
+        <% } %>
+    </ul>
+
+    <h2>Translation:</h2>
+    <form action="/translate" method="post">
+        <label for="sourceLanguage">Source Language:</label>
+        <select id="sourceLanguage" name="source_language">
+            <!-- Loop through available languages -->
+            <% for (let i = 0; i < lg.data.languages.length; i++) { %>
+                <option value="<%= lg.data.languages[i].code %>"><%= lg.data.languages[i].name %></option>
+            <% } %>
+        </select><br>
+
+        <label for="targetLanguage">Target Language:</label>
+        <select id="targetLanguage" name="target_language">
+            <!-- Loop through available languages -->
+            <% for (let i = 0; i < lg.data.languages.length; i++) { %>
+                <option value="<%= lg.data.languages[i].code %>"><%= lg.data.languages[i].name %></option>
+            <% } %>
+        </select><br>
+
+        <label for="textToTranslate">Text to Translate:</label>
+        <input type="text" id="textToTranslate" name="text"><br>
+
+        <button type="submit">Translate</button>
+    </form>
+</body>
+</html>
